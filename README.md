@@ -89,21 +89,21 @@ WHERE ratings_rank = 1;
 
 ---
 
-### 3. List All Movies Released in a Specific Year (2020)
+### 3. List All Movies Released in a Specific Year (2019)
 
 ```sql
 SELECT
     title
 FROM netflix
 WHERE type = 'Movie'
-  AND release_year = 2020;
+  AND release_year = 2019;
 ```
 
-**Objective:** Retrieve all movies released in the year 2020.
+**Objective:** Retrieve all movies released in the year 2019.
 
 ---
 
-### 4. Find the Top 5 Countries with the Most Content on Netflix
+### 4. Find the Top 3 Countries with the Most Content on Netflix
 
 ```sql
 SELECT
@@ -112,10 +112,10 @@ SELECT
 FROM netflix
 GROUP BY TRIM(UNNEST(STRING_TO_ARRAY(country, ',')))
 ORDER BY total_content DESC
-LIMIT 5;
+LIMIT 3;
 ```
 
-**Objective:** Identify the top five countries with the highest amount of Netflix content.
+**Objective:** Identify the top 3 countries with the highest amount of Netflix content.
 
 ---
 
@@ -136,18 +136,18 @@ LIMIT 1;
 
 ---
 
-### 6. Find Content Added Between 2016 and 2021
+### 6. Find Content Added Between 2016 and 2020
 
 ```sql
 SELECT *,
        TO_DATE(date_added, 'Month DD, YYYY') AS new_date_added
 FROM netflix
 WHERE EXTRACT(YEAR FROM TO_DATE(date_added, 'Month DD, YYYY'))
-      BETWEEN 2016 AND 2021
+      BETWEEN 2016 AND 2020
 ORDER BY new_date_added DESC;
 ```
 
-**Objective:** Retrieve all content added to Netflix between 2016 and 2021.
+**Objective:** Retrieve all content added to Netflix between 2016 and 2020.
 
 ---
 
@@ -169,7 +169,7 @@ WHERE director_name = 'Rajiv Chilaka';
 
 ---
 
-### 8. List All TV Shows with More Than 5 Seasons
+### 8. List All TV Shows with More Than 4 Seasons
 
 ```sql
 WITH show_and_seasons AS
@@ -186,11 +186,11 @@ WITH show_and_seasons AS
 
 SELECT *
 FROM show_and_seasons
-WHERE no_of_seasons > 5
+WHERE no_of_seasons > 4
 ORDER BY no_of_seasons;
 ```
 
-**Objective:** Identify TV Shows that have more than five seasons.
+**Objective:** Identify TV Shows that have more than 4 seasons.
 
 ---
 
